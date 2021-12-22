@@ -8,7 +8,7 @@ class Solution{
         vector <int> smaller_number(vector<int> arr, int n){
             vector<int> vt;
             stack<int> st;
-            for (int i = n-1; i < n; i++)
+            for (int i = n-1; i >= 0; --i)
             {
                 while (!st.empty() && st.top() >= arr[i])
                 {
@@ -19,7 +19,7 @@ class Solution{
                     vt.push_back(-1);
                 }
                 else{
-                    vt.push_back(arr[i]);
+                    vt.push_back(st.top());
                 }
                 st.push(arr[i]);                
             }
@@ -30,19 +30,25 @@ class Solution{
 
 int main()
 {
-    int size;
+    int size,a;
     cin>>size;
-    vector<int> arr(size);
+    vector<int> arr;
     for (int i = 0; i < size; i++)
     {
-        cin>>arr[i];
+        cin>>a;
+        arr.push_back(a);
     }
+
+    // for (int i = 0; i < size; i++)
+    // {
+    //     cout<<arr[i];
+    // }
 
     Solution s;
     vector<int> ans = s.smaller_number(arr, size);
     for (int i = 0; i < size; i++)
     {
-        cout<<ans[i];
+        cout<<ans[i]<<" ";
     }
-    return 0;
+    return 0; 
 }
